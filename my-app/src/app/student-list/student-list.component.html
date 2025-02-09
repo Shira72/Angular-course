@@ -19,4 +19,4 @@
 <button type="submit" class="btn btn-primary" (click)="showNewStudent()">Add New Student</button>
 
 
-<student-details *ngIf="selectedStudent"  [student]="selectedStudent" (onSaveNewStudent)="addNewStudentToList($event)"></student-details>
+<student-form *ngIf="selectedStudent"  [student]="selectedStudent" (onSaveStudent)="addStudentToList($event)"></student-form>

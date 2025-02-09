@@ -2,10 +2,15 @@
 export class Student{
     id: number;
     name: string;
-    grade?:number;
+    yearBook: number;
+    active: boolean;
+    marks?: { subject: string, mark: number }[];
+   
     
-    constructor(id:number,name:string){
-        this.id=id;
+    constructor(name:string,yearBook:number,active:boolean){
+        this.id=0;
         this.name=name;
+        this.yearBook=yearBook;
+        this.active=true;
     }
 }

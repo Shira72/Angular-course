@@ -1,16 +1,31 @@
 import { Component } from '@angular/core';
 import { Student } from '../student.model';
 import { CommonModule } from '@angular/common';
-import { StudentDetailsComponent } from "../student-details/student-details.component";
+import { StudentFormComponent } from "../student-form/student-form.component";
+
 
 @Component({
   selector: 'student-list',
-  imports: [CommonModule, StudentDetailsComponent],
+  imports: [CommonModule, StudentFormComponent],
   templateUrl: './student-list.component.html'
 })
 export class StudentListComponent {
-   students: Student[]=[{id:1,name:"Yakov",grade:100},{id:2,name:"Shulamit",grade:80},{id:3,name:"Shoshana",grade:95}];
-   
+   students: Student[]=[
+      {id:1,name:"Yakov",yearBook:12,active:true, marks:[
+        { subject: "Math", mark: 95 },
+        { subject: "English", mark: 88 },
+        { subject: "Science", mark: 92 }
+      ]},
+      {id:2,name:"Shulamit",yearBook:9,active:true, marks:[
+        { subject: "Math", mark: 95 },
+        { subject: "English", mark: 88 },
+        { subject: "Science", mark: 92 }
+      ] },
+      {id:3,name:"Shoshana",yearBook:4,active:true, marks:[
+        { subject: "Math", mark: 95 },
+        { subject: "English", mark: 88 },
+        { subject: "Science", mark: 92 }
+      ]}];   
    selectedStudent: Student | undefined;
 
 
@@ -22,13 +37,21 @@ export class StudentListComponent {
       this.selectedStudent=studentToShow;
    }
    showNewStudent(){
-    this.selectedStudent=new Student(3,"new student name");
+    this.selectedStudent=new Student("new student name",2020,false);
     console.log("show new student");
     
    }
-   addNewStudentToList(studentToAdd:Student){
-    this.students.push(studentToAdd);
-    console.log("addNewStudentToList")
+   addStudentToList(studentToSave:Student){
+      if(studentToSave.id==0){
+         console.log("addStudentToList")
+         studentToSave.id=this.students.length + 1;
+         this.students.push(studentToSave);
+      }
+      else{
+         let taskToUpdate=this.students.filter(x=>x.id==studentToSave.id)[0];
+         let index= this.students.indexOf(taskToUpdate);
+         this.students[index]=studentToSave;
+      }
     //this.selectedStudent=null;
     this.selectedStudent = undefined;
    }
