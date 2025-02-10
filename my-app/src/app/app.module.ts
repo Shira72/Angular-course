@@ -6,11 +6,14 @@ import { StudentListComponent } from "./student-list/student-list.component";
 import { StudentDetailsComponent } from "./student-details/student-details.component";
 import { StudentFormComponent } from "./student-form/student-form.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { studentService } from "./student.service";
+
 
 @NgModule({
     declarations:[AppComponent,StudentListComponent,StudentDetailsComponent,StudentFormComponent,ReactiveFormsModule],
     imports:[BrowserModule,FormsModule,NgModule],
-    bootstrap:[AppComponent]
+    bootstrap:[AppComponent],
+    providers:[studentService],
 })
 export class AppModule{
 

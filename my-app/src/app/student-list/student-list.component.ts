@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Student } from '../student.model';
 import { CommonModule } from '@angular/common';
 import { StudentFormComponent } from "../student-form/student-form.component";
+import { studentService } from '../student.service';
 
 
 @Component({
@@ -10,22 +11,7 @@ import { StudentFormComponent } from "../student-form/student-form.component";
   templateUrl: './student-list.component.html'
 })
 export class StudentListComponent {
-   students: Student[]=[
-      {id:1,name:"Yakov",yearBook:12,active:true, marks:[
-        { subject: "Math", mark: 95 },
-        { subject: "English", mark: 88 },
-        { subject: "Science", mark: 92 }
-      ]},
-      {id:2,name:"Shulamit",yearBook:9,active:true, marks:[
-        { subject: "Math", mark: 95 },
-        { subject: "English", mark: 88 },
-        { subject: "Science", mark: 92 }
-      ] },
-      {id:3,name:"Shoshana",yearBook:4,active:true, marks:[
-        { subject: "Math", mark: 95 },
-        { subject: "English", mark: 88 },
-        { subject: "Science", mark: 92 }
-      ]}];   
+   students: Student[];   
    selectedStudent: Student | undefined;
 
 
@@ -55,9 +41,9 @@ export class StudentListComponent {
     //this.selectedStudent=null;
     this.selectedStudent = undefined;
    }
-  // constructor(students: Student []){
-  //   this.students=students;
-  // }
+  constructor(private _studentService:studentService){
+    this.students=_studentService.getStudents();
+  }
   
 }
 

@@ -9,8 +9,8 @@ import { StudentFormComponent } from "./student-form/student-form.component";
     //template:"<h1>hello this is my project<h1>",
     templateUrl:"app.component.html",
     selector:"app-root",
-    imports:[StudentListComponent,StudentFormComponent]
-  
+    imports:[StudentListComponent,StudentFormComponent],
+   
 
   })
 

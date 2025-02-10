@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Student } from '../student.model';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { studentService } from '../student.service';
 
 
 @Component({
@@ -11,23 +12,11 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 
 export class StudentFormComponent {
-  students: Student[]=[
-    {id:1,name:"Yakov",yearBook:12,active:true, marks:[
-      { subject: "Math", mark: 95 },
-      { subject: "English", mark: 88 },
-      { subject: "Science", mark: 92 }
-    ]},
-    {id:2,name:"Shulamit",yearBook:9,active:true, marks:[
-      { subject: "Math", mark: 95 },
-      { subject: "English", mark: 88 },
-      { subject: "Science", mark: 92 }
-    ] },
-    {id:3,name:"Shoshana",yearBook:4,active:true, marks:[
-      { subject: "Math", mark: 95 },
-      { subject: "English", mark: 88 },
-      { subject: "Science", mark: 92 }
-    ]}];   
-    
+  students: Student[]; 
+  constructor(private _studentService: studentService){
+    this.students=_studentService.getStudents();
+  }  
+
   private _student!: Student;  
 
   public get student(): Student{
