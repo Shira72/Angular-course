@@ -23,4 +23,24 @@ export class studentService{
               { subject: "Science", mark: 92 }
             ]}];   
     }
+
+    getValue():Promise<number>{
+      return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+          resolve(2);
+        },3000);
+      });
+    }
+    callFunc(){
+      console.log("before call getValue");
+
+      this.getValue().then((value)=>{
+        console.log("in get value",value);
+      })
+      .catch((err)=>{
+        console.log("error from call getValue")
+      })
+      console.log("after call getValue");
+
+    }
 }

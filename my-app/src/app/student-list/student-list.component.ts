@@ -43,6 +43,7 @@ export class StudentListComponent {
    }
   constructor(private _studentService:studentService){
     this.students=_studentService.getStudents();
+    this._studentService.callFunc();
   }
   
 }
