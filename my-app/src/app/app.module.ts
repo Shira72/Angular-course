@@ -8,13 +8,13 @@ import { StudentFormComponent } from "./student-form/student-form.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { studentService } from "./student.service";
 import { ObservableDemoComponent } from "./observable-demo/observable-demo.component";
-
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
     declarations:[AppComponent,StudentListComponent,StudentDetailsComponent,StudentFormComponent,ReactiveFormsModule,ObservableDemoComponent],
     imports:[BrowserModule,FormsModule,NgModule],
     bootstrap:[AppComponent],
-    providers:[studentService],
+    providers:[studentService,provideHttpClient()],
 })
 export class AppModule{
 

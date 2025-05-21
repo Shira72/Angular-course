@@ -41,9 +41,31 @@ export class StudentListComponent {
     //this.selectedStudent=null;
     this.selectedStudent = undefined;
    }
+
+   showActiveStudents(isActive:boolean){
+      this._studentService.getActiveStudentsFromService(isActive).subscribe(data =>{
+         this.students=data;
+      },err =>{
+         alert(err)
+      })
+   }
+   saveStudentsToServer(){
+      this._studentService.saveStudents(this.students).subscribe(data => {
+         if (data)
+            alert("save success!");
+         else
+            alert("save failed!")
+      }, err => {
+         alert(err)
+      });
+   }
   constructor(private _studentService:studentService){
     this.students=_studentService.getStudents();
     this._studentService.callFunc();
+    this._studentService.getStudentsFromService().subscribe(data=>{
+      this.students=data;
+    })
+
   }
   
 }

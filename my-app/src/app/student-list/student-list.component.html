@@ -1,4 +1,6 @@
 <p>student-list works!</p>
+
+<input type="checkbox" #chb (change)="showActiveStudents(chb.checked)"/>
 <ul class="list-group">
     <li *ngFor="let student of students" class="list-group-item"
      [ngClass]="{'active':selectedStudent && selectedStudent.name==student.name}"> 
@@ -17,6 +19,7 @@
 </ul>
 
 <button type="submit" class="btn btn-primary" (click)="showNewStudent()">Add New Student</button>
+<button class="btn btn-success" (click)="saveStudentsToServer()">save Students To Server</button>
 
 
 <student-form *ngIf="selectedStudent"  [student]="selectedStudent" (onSaveStudent)="addStudentToList($event)"></student-form>

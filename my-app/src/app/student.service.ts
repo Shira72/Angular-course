@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Student } from "./student.model";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -23,7 +25,15 @@ export class studentService{
               { subject: "Science", mark: 92 }
             ]}];   
     }
-
+    getStudentsFromService(){
+      return this._http.get<Student[]>("/api/student")
+    }
+    getActiveStudentsFromService(isActive:Boolean){
+      return this._http.get<Student[]>("/api/student?isActive="+isActive)
+    }
+    saveStudents(studentsList: Student[]): Observable<boolean>{
+      return this._http.post<boolean>("/api/student",studentsList);
+    }
     getValue():Promise<number>{
       return new Promise((resolve,reject)=>{
         setTimeout(()=>{
@@ -42,5 +52,8 @@ export class studentService{
       })
       console.log("after call getValue");
 
+    }
+    constructor(private _http:HttpClient){
+      this.callFunc()
     }
 }
