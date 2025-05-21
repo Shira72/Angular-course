@@ -1,8 +1,8 @@
 import { core } from "@angular/compiler";
 import {Component} from "@angular/core";
-import { StudentListComponent } from "./student-list/student-list.component";
-import { StudentFormComponent } from "./student-form/student-form.component";
-import { ObservableDemoComponent } from "./observable-demo/observable-demo.component";
+import { StudentListComponent } from "./modules/students/student-list/student-list.component";
+import { StudentFormComponent } from "./modules/students/student-form/student-form.component";
+import { ObservableDemoComponent } from "./modules/demo/observable-demo/observable-demo.component";
 
 
 

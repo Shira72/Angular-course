@@ -3,7 +3,7 @@
 <input type="checkbox" #chb (change)="showActiveStudents(chb.checked)"/>
 <ul class="list-group">
     <li *ngFor="let student of students" class="list-group-item"
-     [ngClass]="{'active':selectedStudent && selectedStudent.name==student.name}"> 
+     [ngClass]="{'active': selectedStudent && selectedStudent.name == student.name}"> 
         <div class="row">
             <div class="col-1">{{student.id}} </div>    
             <div class="col-2"> {{student.name}}</div>
